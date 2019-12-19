@@ -16,7 +16,7 @@
 #
 
 # The target to build, see VALID_TARGETS below
-TARGET    ?= OMNIBUSF4
+TARGET    ?= STM32F7X2
 
 # Compile-time options
 OPTIONS   ?=
@@ -136,7 +136,7 @@ EXTRA_LD_FLAGS  :=
 # Default Tool options - can be overridden in {mcu}.mk files.
 #
 ifeq ($(DEBUG),GDB)
-OPTIMISE_DEFAULT      := -Og
+OPTIMISE_DEFAULT      := -Og -Os
 
 LTO_FLAGS             := $(OPTIMISE_DEFAULT)
 DEBUG_FLAGS            = -ggdb3 -DDEBUG
@@ -145,7 +145,7 @@ ifeq ($(DEBUG),INFO)
 DEBUG_FLAGS            = -ggdb3
 endif
 OPTIMISATION_BASE     := -flto -fuse-linker-plugin -ffast-math
-OPTIMISE_DEFAULT      := -O2
+OPTIMISE_DEFAULT      := -O3
 OPTIMISE_SPEED        := -Ofast
 OPTIMISE_SIZE         := -Os
 
